@@ -30,7 +30,7 @@ else
 
 		try
 			@info("Installing Python packages using pip ...")
-			Core.eval(Main, :(@PyCall.pyimport pip))
+			Core.eval(Main, :(PyCall.pyimport("pip")))
 			global proxy_args = String[]
 			if haskey(ENV, "http_proxy")
 				push!(proxy_args, "--proxy")
@@ -61,7 +61,7 @@ else
 		end
 
 		try
-			Core.eval(Main, :(@PyCall.pyimport matplotlib))
+			Core.eval(Main, :(PyCall.pyimport("matplotlib")))
 			@info("Python MatPlotLib is installed using pip!")
 		catch errmsg
 			println(errmsg)
